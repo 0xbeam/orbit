@@ -1,23 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Gravity Brand System — Light Editorial ─── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surface colors */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F6F5F2;
+  --bg-tertiary: #EFEDE8;
+  --bg-elevated: #FFFFFF;
+  --bg-hover: #F0EDE8;
+  --bg-active: #E8E5E0;
+
+  /* Border colors */
+  --border-default: #E8E5E0;
+  --border-subtle: #EFEDE8;
+  --border-strong: #D8D5D0;
+  --border-focus: rgba(42, 122, 91, 0.5);
+
+  /* Text colors */
+  --text-primary: #111111;
+  --text-secondary: #888888;
+  --text-tertiary: #AAAAAA;
+  --text-inverse: #FFFFFF;
+
+  /* Accent colors — Forest Green */
+  --accent-primary: #2A7A5B;
+  --accent-hover: #1A5C3A;
+  --accent-subtle: #E8F5EE;
+  --accent-text: #2A7A5B;
+
+  /* Status colors */
+  --status-success: #2A7A5B;
+  --status-warning: #B8860B;
+  --status-danger: #C0392B;
+  --status-info: #2980B9;
+  --status-orange: #B8860B;
+
+  /* Category colors (light-mode optimized) */
+  --cat-team: #2A7A5B;
+  --cat-team-bg: #E8F5EE;
+  --cat-client: #2980B9;
+  --cat-client-bg: #EBF5FB;
+  --cat-investor: #B8860B;
+  --cat-investor-bg: #FFF3E0;
+  --cat-community: #8E44AD;
+  --cat-community-bg: #F5EEF8;
+  --cat-advisor: #B8860B;
+  --cat-advisor-bg: #FFF8E1;
+  --cat-ops: #5B8C7A;
+  --cat-ops-bg: #E8F5EE;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.06);
+
+  /* Spacing */
+  --radius-sm: 5px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+
+  /* Transitions */
+  --ease: cubic-bezier(.16, 1, .3, 1);
+  --transition: 200ms ease;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-display: 'Cormorant', serif;
+  --font-body: 'DM Sans', -apple-system, system-ui, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* Legacy compat */
+  --background: var(--bg-primary);
+  --foreground: var(--text-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base resets */
+*, *::before, *::after {
+  border-color: var(--border-default);
+}
+
+html {
+  color-scheme: light;
+  font-size: 14px;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Scrollbar styling — subtle taupe */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.14);
+}
+
+/* Focus outline — green */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Selection — green */
+::selection {
+  background: #2A7A5B;
+  color: #FFFFFF;
+}
+
+/* Smooth transitions */
+a, button, input, select, textarea {
+  transition: all var(--transition);
+}
+
+/* Splash screen animations */
+@keyframes splashFadeIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splashExpandLine {
+  0% { width: 0; }
+  100% { width: 120px; }
+}
+
+/* ─── Typography overrides ─── */
+
+/* Clean sans-serif headings */
+h1, .text-display {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h2, h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+/* Mono labels */
+.font-mono, code, pre {
+  font-family: var(--font-mono) !important;
 }
 
 @layer utilities {
