@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌀 orbit — typescript application framework
 
-## Getting Started
+> AI-native personal CRM with calendar sync, email integration, relationship decay tracking, and Claude-powered daily briefings. Desktop + web.
 
-First, run the development server:
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js&logoColor=white)](https://nextjs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Electron](https://img.shields.io/badge/Electron-35-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| **Contact management** | Full contact cards with relationship strength indicators and decay tracking |
+| **Google Calendar sync** | Auto-syncs calendar events, displays day view with countdown timers |
+| **Email integration** | Gmail thread display, compose panel, per-contact email history |
+| **AI daily briefing** | Claude-powered morning brief summarizing today's meetings and priorities |
+| **Relationship decay** | Visual indicators showing which relationships need attention |
+| **Lost contacts** | Surface contacts you haven't engaged with recently |
+| **Desktop app** | Electron wrapper for native macOS experience |
+| **Auto-sync** | Background sync for calendar and email data |
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/0xbeam/orbit.git && cd orbit
+npm install
+cp .env.example .env   # add Google OAuth + Anthropic API key
+npm run dev             # web at localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Desktop:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run electron:dev    # launch Electron app
+npm run electron:build  # build .dmg for macOS
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── calendar/     Google Calendar sync + display
+│   ├── compose/      Email compose
+│   ├── contacts/     Contact management
+│   ├── email/        Gmail thread viewer
+│   ├── now/          Today's overview
+│   └── settings/     App configuration
+├── components/       UI components (ContactCard, Timeline, DecayIndicator, etc.)
+├── db/               Drizzle ORM schema + queries
+└── lib/              Shared utilities
+electron/             Electron main process
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js 16 · React 19 · TypeScript · Drizzle ORM · Vercel Postgres · Google APIs · Claude Agent SDK · Electron · Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
